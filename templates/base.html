@@ -1,0 +1,52 @@
+<!doctype html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+    <title>Star Social</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css"
+        media="screen" charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Russo+One" rel="stylesheet">
+    <link rel="stylesheet" href="master.css">
+    <script type="text/javascript" src="master.js"></script>
+
+</head>
+
+
+<body>
+    <nav class="navbar navbar-default techfont custom-navbar bg-primary navbar-dark"style="border-style: outset;color:rgb(62, 36, 226);">
+        <div class="container bg-primary navbar-dark" style="border-radius: 1%">
+            <a class="navbar-brand mynav" href="{% url 'home' %}">Star Social</a>
+            <ul class="nav navbar-nav navbar-right bg-primary navbar-dark">
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'posts:create' %}">Post</a></li>
+                <li><a href="{% url 'groups:all' %}">Groups</a></li>
+                <li><a href="{% url 'groups:create' %}">Create Group</a></li>
+                <li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
+                {% else %}
+                <li><a href="{% url 'accounts:login' %}">Log In</a></li>
+                <li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div class="container mycontent">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+
+<canvas id="canvas"></canvas>
+<link rel="stylesheet" href="master.css">
+<script type="text/javascript" src="master.js"></script>
+</html>
